@@ -100,5 +100,9 @@ resource "aws_cloudfront_distribution" "hello_world_web_app_distribution" {
         max_ttl     = var.max_ttl
     }
 
+    viewer_certificate {
+        cloudfront_default_certificate = true
+    }
+
     tags = var.tags
 }
