@@ -34,8 +34,8 @@ jobs:
           python-version: '3.9'
           cache: 'pip' # caching pip dependencies
 
-      - name: Create invalidation - to update webapp page
-        run: |
-          pip install -r .github/workflows/requirements.txt
-          python .github/workflows/cloud-front-invalidation.py --awsAccess ${{ secrets.AWS_ACCESS_KEY_ID }} --awsSecret ${{ secrets.AWS_SECRET_ACCESS_KEY}} \
-            --awsRegion ${{ secrets.AWS_REGION }} --distributionId ${{ secrets.distributionId }} --invalidationPath "/index.html"
+    - name: Create invalidation - to update webapp page
+      run: |
+        pip install -r .github/workflows/requirements.txt
+        python .github/workflows/cloud-front-invalidation.py --awsAccess ${{ secrets.AWS_ACCESS_KEY_ID }} --awsSecret ${{ secrets.AWS_SECRET_ACCESS_KEY}} \
+          --awsRegion ${{ secrets.AWS_REGION }} --distributionId ${{ secrets.distributionId }} --invalidationPath "/index.html"
