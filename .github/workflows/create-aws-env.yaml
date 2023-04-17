@@ -3,9 +3,6 @@ name: create-aws-env
 # trrigered manualy from github UI
 on:
   workflow_dispatch:
-    # Inputs the workflow accepts.
-    on:
-  workflow_dispatch:
     inputs:
       tfAction:
         description: 'Select  the terraform action you want to run - apply/destroy'
