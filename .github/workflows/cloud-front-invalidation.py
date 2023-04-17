@@ -40,7 +40,7 @@ def create_invalidation (accessKey: str, secretKey: str, region: str, distributi
     :param invalidationPath:
     """
     # start boto3 session
-    awsSession = boto3.Sessionboto3.Session( aws_access_key_id=accessKey, aws_secret_access_key=secretKey, region_name=region)
+    awsSession = boto3.Session( aws_access_key_id=accessKey, aws_secret_access_key=secretKey, region_name=region)
     # get cloudfront resource
     cloudfront = awsSession.client('cloudfront')
     # create invalidation
