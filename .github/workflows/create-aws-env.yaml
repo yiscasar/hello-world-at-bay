@@ -9,7 +9,8 @@ on:
         default: 'apply'
         enum: ['apply', 'destroy']
 
-upgrade_prod_env:
+jobs:
+  create-aws-env:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code from prod branch
@@ -28,7 +29,7 @@ upgrade_prod_env:
           python-version: '3.9'
           cache: 'pip' # caching pip dependencies
 
-      - name: create-env
+      - name: Create env
         run: |
           pip install -r infra/requirements.txt
           python infra/main.py --workspace ${GITHUB_WORKSPACE}/infra --awsAccess ${{ secrets.AWS_ACCESS_KEY_ID }} \
