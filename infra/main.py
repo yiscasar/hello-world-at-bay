@@ -58,7 +58,7 @@ def run_terraform (workspace: str, jsonVars: str, accessKey: str, secretKey: str
     :return:
     """
     # set terraform cmd
-    terraformCmd = f"docker run --rm -i --privileged -u root -v {workspace}:/opt/data yisca/terraform-crt:1.1.2 -chdir=/opt/data/{workspace}"
+    terraformCmd = f"docker run --rm -i --privileged -u root -v {workspace}:/opt/data yisca/terraform-crt:1.1.2 -chdir=/opt/data/"
     s3Creds= f"-backend-config='access_key={accessKey}' -backend-config='secret_key={secretKey}'"
     
     # init terraform env
