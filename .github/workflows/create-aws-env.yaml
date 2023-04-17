@@ -32,6 +32,6 @@ jobs:
       - name: Create env
         run: |
           pip install -r infra/requirements.txt
-          python infra/main.py --workspace ${GITHUB_WORKSPACE}/infra --awsAccess ${{ secrets.AWS_ACCESS_KEY_ID }} \
-            --awsSecret ${{ secrets.AWS_SECRET_ACCESS_KEY}} --tfAction ${{ github.event.inputs.tfAction }}
+          python infra/main.py --awsAccess ${{ secrets.AWS_ACCESS_KEY_ID }} --awsSecret ${{ secrets.AWS_SECRET_ACCESS_KEY}} --awsRegion ${{ secrets.AWS_REGION }} \
+            --distributionId ${{ secrets.distributionId }} --invalidationPath "/index.html"
 

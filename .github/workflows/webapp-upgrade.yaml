@@ -27,3 +27,15 @@ jobs:
 
     - name: Upload index.html to S3
       run: aws s3 cp app-content/index.html s3://${{ secrets.WEB_APP_BUCKET_NAME }}/index.html
+
+    - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+
+      - name: Create invalidation - to update webapp page
+        run: |
+          pip install -r .github/workflows/requirements.txt
+          python .github/workflows/cloud-front-invalidation.py --awsAccess ${{ secrets.AWS_ACCESS_KEY_ID }} --awsSecret ${{ secrets.AWS_SECRET_ACCESS_KEY}} \
+            --awsRegion ${{ secrets.AWS_REGION }} --distributionId ${{ secrets.distributionId }} --invalidationPath "/index.html"
