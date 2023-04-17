@@ -42,7 +42,7 @@ resource "aws_s3_bucket" "web_app_bucket" {
 data "aws_iam_policy_document" "s3_website_policy" {
     statement {
         actions   = ["s3:GetObject"]
-        resources = ["${aws_s3_bucket.web_app_bucket_name.arn}/*"]
+        resources = ["${aws_s3_bucket.web_app_bucket.arn}/*"]
         principals {
             type        = "*"
             identifiers = ["*"]
@@ -51,10 +51,10 @@ data "aws_iam_policy_document" "s3_website_policy" {
 }
 
 resource "aws_s3_bucket_policy" "static_website_policy" {
-    bucket = aws_s3_bucket.web_app_bucket_name.id
+    bucket = aws_s3_bucket.web_app_bucket.id
     policy = data.aws_iam_policy_document.s3_website_policy.json
 
-    depends_on = [aws_s3_bucket.web_app_bucket_name]
+    depends_on = [aws_s3_bucket.web_app_bucket]
 }
 
 # cloud front access to web-app bucket
@@ -64,9 +64,9 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
 
 # cloudFront destrbution
 resource "aws_cloudfront_distribution" "hello_world_web_app_distribution" {
-    depends_on = [aws_s3_bucket.web_app_bucket_name]
+    depends_on = [aws_s3_bucket.web_app_bucket]
     origin {
-        domain_name = aws_s3_bucket.web_app_bucket_name.bucket_regional_domain_name
+        domain_name = aws_s3_bucket.web_app_bucket.bucket_regional_domain_name
         origin_id   = var.web_app_bucket_name
 
         s3_origin_config {
@@ -83,7 +83,7 @@ resource "aws_cloudfront_distribution" "hello_world_web_app_distribution" {
     default_cache_behavior {
         allowed_methods         = var.allowed_methods
         cached_methods          = var.cached_methods
-        target_origin_id        = aws_s3_bucket.web_app_bucket_name.id
+        target_origin_id        = aws_s3_bucket.web_app_bucket.id
 
         viewer_protocol_policy = "${var.app_protocol}"
 
