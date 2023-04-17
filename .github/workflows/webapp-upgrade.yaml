@@ -29,10 +29,10 @@ jobs:
       run: aws s3 cp app-content/index.html s3://${{ secrets.WEB_APP_BUCKET_NAME }}/index.html
 
     - name: Setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          cache: 'pip' # caching pip dependencies
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        cache: 'pip' # caching pip dependencies
 
     - name: Create invalidation - to update webapp page
       run: |
