@@ -21,7 +21,9 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Install AWS CLI
-      run: sudo apt-get install awscli -y --fix-missing
+      run: |
+        sudo apt-get update 
+        sudo apt-get install awscli -y
 
     - name: Upload index.html to S3
       run: aws s3 cp app-content/index.html s3://${{ secrets.WEB_APP_BUCKET_NAME }}/index.html
