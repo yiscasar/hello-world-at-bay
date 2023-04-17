@@ -55,14 +55,14 @@ variable "app_protocol" {
 
 
 variable "allowed_methods" {
-  type        = list(string)
-  description = "set the HTTP methods that CloudFront processes and forwards to to the web app"
-  default     = ["GET", "HEAD"]
+    type        = list(string)
+    description = "set the HTTP methods that CloudFront processes and forwards to to the web app"
+    default     = ["GET", "HEAD"]
 }
 
 
 variable "cached_methods" {
-  type        = list(string)
-  description = "set the HTTP methods for which CloudFront caches responses"
-  default     = ["GET", "HEAD"]
+    type        = list(string)
+    description = "set the HTTP methods for which CloudFront caches responses"
+    default     = ["GET", "HEAD"]
 }

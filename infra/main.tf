@@ -104,5 +104,14 @@ resource "aws_cloudfront_distribution" "hello_world_web_app_distribution" {
         cloudfront_default_certificate = true
     }
 
+    restrictions {
+        geo_restriction {
+            restriction_type = "none"
+        }
+    }
+
+    price_class  = "PriceClass_All"
+    http_version = "http2"
+
     tags = var.tags
 }
