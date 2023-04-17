@@ -24,4 +24,4 @@ jobs:
       run: sudo apt-get install awscli
 
     - name: Upload index.html to S3
-      run: aws s3 cp app-content/index.html s3://${{ secrets.BUCKET_NAME }}/index.html
+      run: aws s3 cp app-content/index.html s3://${{ secrets.WEB_APP_BUCKET_NAME }}/index.html
