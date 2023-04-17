@@ -49,8 +49,8 @@ variable "max_ttl" {
 
 variable "app_protocol" {
     type        = string
-    description = "set in which protocol (http, https or both) user can access th app"
-    default     = "http-only"
+    description = "set in which protocol (allow-all https-only redirect-to-https]) user can access th app"
+    default     = "allow-all"
 }
 
 
