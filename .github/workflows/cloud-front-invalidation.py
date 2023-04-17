@@ -61,7 +61,7 @@ def main():
     # get user input
     args = get_arg()
     # create invalidation
-    create_invalidation (args.awsAccessKey, args.awsSecretKey, args.awsRegion, args.distributionId, args.invalidationPath)
+    create_invalidation (args.awsAccess, args.awsSecret, args.awsRegion, args.distributionId, args.invalidationPath)
 
 
 if __name__ == '__main__':
