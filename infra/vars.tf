@@ -7,7 +7,7 @@ variable "secret_key" {}
 
 # aws region
 variable "region" {
-    defdefault = "eu-west-1"
+    default = "eu-west-1"
 }
 
 # default tags - for all resources
