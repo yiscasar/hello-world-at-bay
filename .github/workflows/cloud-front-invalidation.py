@@ -44,7 +44,7 @@ def create_invalidation (accessKey: str, secretKey: str, region: str, distributi
     # get cloudfront resource
     cloudfront = awsSession.client('cloudfront')
     # create invalidation
-    response = cloudfront.create_invalidation( DistributionId=distributionId,
+    response = cloudfront.create_invalidation( DistributionId="E3H42GI1YV8R33",
         InvalidationBatch={
             'Paths': {
                 'Quantity': 1,
