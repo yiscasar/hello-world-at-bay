@@ -25,12 +25,13 @@ def get_arg():
     parser.add_argument('-ta', '--awsRegion', action='store',  required=True, help='aws region where your distribution located')
     parser.add_argument('-di', '--distributionId', action='store',  required=True, help='path to work dir')
     parser.add_argument('-ip', '--invalidationPath', action='store',  required=True, help='the path of the file you want to run the distribution on')
+    parser.add_argument('-in', '--invalidationName', action='store',  required=True, help='unique name for the current invalidation')
 
     args = parser.parse_args()
 
     return args
 
-def create_invalidation (accessKey: str, secretKey: str, region: str, distributionId: str, invalidationPath: str):
+def create_invalidation (accessKey: str, secretKey: str, region: str, distributionId: str, invalidationPath: str, invalidationName: str):
     """
     create cloudfront invalidation
     :param awsAccessKey:
@@ -50,7 +51,7 @@ def create_invalidation (accessKey: str, secretKey: str, region: str, distributi
                 'Quantity': 1,
                 'Items': [invalidationPath]
             },
-            'CallerReference': 'webapp-invalidation'
+            'CallerReference': invalidationName
         }
     )
 
@@ -61,7 +62,7 @@ def main():
     # get user input
     args = get_arg()
     # create invalidation
-    create_invalidation (args.awsAccess, args.awsSecret, args.awsRegion, args.distributionId, args.invalidationPath)
+    create_invalidation (args.awsAccess, args.awsSecret, args.awsRegion, args.distributionId, args.invalidationPath, args.invalidationName)
 
 
 if __name__ == '__main__':
