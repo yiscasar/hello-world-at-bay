@@ -37,7 +37,7 @@ variable "min_ttl" {
 variable "default_ttl" {
     type        = number
     description = "default time for caching content"
-    default     = 1300
+    default     = 0
 }
 
 variable "max_ttl" {
