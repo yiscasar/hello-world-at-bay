@@ -38,4 +38,4 @@ jobs:
       run: |
         pip install -r .github/workflows/requirements.txt
         python .github/workflows/cloud-front-invalidation.py --awsAccess ${{ secrets.AWS_ACCESS_KEY_ID }} --awsSecret ${{ secrets.AWS_SECRET_ACCESS_KEY}} \
-          --awsRegion ${{ secrets.AWS_REGION }} --distributionId "E3H42GI1YV8R33" --invalidationPath "/index.html"
+          --awsRegion ${{ secrets.AWS_REGION }} --distributionId ${{ secrets.DISTRIBUTION_ID }} --invalidationPath "/index.html"
